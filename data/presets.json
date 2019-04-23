@@ -1,0 +1,32 @@
+[
+  {
+    "name" : "rhonexpress",
+    "X" : "15",
+    "Y" : "146.5",
+    "L" : "180",
+    "H" : "90",
+    "unit": "mm",
+    "format" : "a4",
+    "color" : "white"
+  },
+  {
+    "name" : "AF",
+    "X" : "11",
+    "Y" : "18",
+    "L" : "9",
+    "H" : "9",
+    "unit": "cm",
+    "format" : "a4",
+    "color" : "white"
+  },
+  {
+    "name" : "klm",
+    "X" : "11",
+    "Y" : "18",
+    "L" : "9",
+    "H" : "9",
+    "unit": "cm",
+    "format" : "a4",
+    "color" : "white"
+  }
+]

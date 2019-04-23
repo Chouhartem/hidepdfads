@@ -42,7 +42,6 @@ gen_pdf() { # arguments: infile outfile X Y L H color unit format
       \begin{tikzpicture}[remember picture,overlay]
 EOB
   echo "\\draw[color=$color,fill=$color] (\$(current page.north west) + ($X$unit, -$Y$unit)\$) rectangle ++ ($L$unit, -$H$unit);\\end{tikzpicture}}]{$infile}\\end{document}" >>main.tex
-  cat main.tex
   $LATEXCC -interaction=nonstopmode main.tex || { >&2 echo -e "\n\n\nLaTeX error during compilation"; rm -r "$tmp_dir"; exit 1; }
   $LATEXCC -interaction=nonstopmode main.tex
   cp -i main.pdf "$act_dir/$outfile"

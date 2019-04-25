@@ -2,7 +2,7 @@
 
 A small tool to hide a recurrent part of a PDF file such as ads on plane tickets for instance.
 
-It is a scripted version of [this blog post](https://blog.epheme.re/latex-ad-block.html).
+It is a scripted version of [this blog post](https://blog.epheme.re/tips/latex-ad-block.html).
 
 ## Files
 

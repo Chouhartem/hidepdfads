@@ -1,5 +1,5 @@
 #!/bin/env sh
-:${LATEXCC:=pdflatex}
+LATEXCC=${LATEXCC:=pdflatex}
 
 print_help() {
   >&2 echo "Usage: $0 <command> [<args>]"

@@ -28,5 +28,15 @@
     "unit": "cm",
     "format" : "a4",
     "color" : "white"
+  },
+  {
+    "name" : "sncf",
+    "X" : "10",
+    "Y" : "147",
+    "L" : "192",
+    "H" : "56",
+    "unit": "mm",
+    "format" : "a4",
+    "color" : "white"
   }
 ]

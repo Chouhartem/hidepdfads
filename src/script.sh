@@ -29,6 +29,7 @@ gen_pdf() { # arguments: infile outfile X Y L H color unit format
   tmp_dir=`mktemp -d`
   act_dir=$(pwd)
 
+  cp "$infile" "$tmp_dir"
   cd "$tmp_dir"
   echo "\\documentclass[$format""paper]{article}" > main.tex
   cat <<EOB >>main.tex

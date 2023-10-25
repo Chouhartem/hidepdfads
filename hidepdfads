@@ -29,6 +29,7 @@ gen_pdf() { # arguments: infile outfile X Y L H color unit format
   tmp_dir=`mktemp -d`
   act_dir=$(pwd)
 
+  cp "$infile" "$tmp_dir"
   cd "$tmp_dir"
   echo "\\documentclass[$format""paper]{article}" > main.tex
   cat <<EOB >>main.tex
@@ -102,4 +103,4 @@ __DATA__
 rhonexpress 15 146.5 180 90 white mm a4
 AF 11 18 9 9 white cm a4
 klm 11 18 9 9 white cm a4
-sncf 10 147 192 56 white mm a4
+sncf 112 155 88 132 white mm a4

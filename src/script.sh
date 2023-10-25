@@ -29,23 +29,28 @@ gen_pdf() { # arguments: infile outfile X Y L H color unit format
   tmp_dir=`mktemp -d`
   act_dir=$(pwd)
 
-  cp "$infile" "$tmp_dir"
-  cd "$tmp_dir"
-  echo "\\documentclass[$format""paper]{article}" > main.tex
-  cat <<EOB >>main.tex
+  if cp "$infile" "$tmp_dir"
+  then
+    cd "$tmp_dir"
+    echo "\\documentclass[$format""paper]{article}" > main.tex
+    cat <<EOB >>main.tex
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{pdfpages}
 \pagestyle{empty}
 \begin{document}
 \includepdf[pages={-},% include all pages
-  pagecommand={% is called at the beginning of each inclusion
-      \begin{tikzpicture}[remember picture,overlay]
+pagecommand={% is called at the beginning of each inclusion
+\begin{tikzpicture}[remember picture,overlay]
 EOB
-  echo "\\draw[color=$color,fill=$color] (\$(current page.north west) + ($X$unit, -$Y$unit)\$) rectangle ++ ($L$unit, -$H$unit);\\end{tikzpicture}}]{$infile}\\end{document}" >>main.tex
-  $LATEXCC -interaction=nonstopmode main.tex || { >&2 echo -e "\n\n\nLaTeX error during compilation"; rm -r "$tmp_dir"; exit 1; }
-  $LATEXCC -interaction=nonstopmode main.tex
-  cp -i main.pdf "$act_dir/$outfile"
+    echo "\\draw[color=$color,fill=$color] (\$(current page.north west) + ($X$unit, -$Y$unit)\$) rectangle ++ ($L$unit, -$H$unit);\\end{tikzpicture}}]{$infile}\\end{document}" >>main.tex
+    $LATEXCC -interaction=nonstopmode main.tex || { >&2 echo -e "\n\n\nLaTeX error during compilation"; rm -r "$tmp_dir"; exit 1; }
+    $LATEXCC -interaction=nonstopmode main.tex
+    cp -i main.pdf "$act_dir/$outfile"
+  else
+    >&2 echo "$0: The file $infile doesn't exist or cannot be read."
+    exit 1
+  fi
   rm -r "$tmp_dir"
 }
 
